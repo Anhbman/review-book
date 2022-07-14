@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('points', function(Blueprint $table){
             $table->id();
-            $table->string('title');
-            $table->string('description');
+            $table->bigInteger('user_id');
+            $table->bigInteger('book_id');
+            $table->string('content');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('point');
     }
 };
