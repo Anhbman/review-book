@@ -2,6 +2,10 @@
 /public/build
 /public/hot
 /public/storage
+/public/css
+/public/js
+/public/dist
+/public/plugins
 /storage/*.key
 /vendor
 .env
@@ -13,3 +17,4 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+
