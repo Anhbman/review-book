@@ -11,4 +11,12 @@ class Book extends Model
     protected $table = 'books';
 
     public $timestamps = true;
+
+    protected $fillable = [
+        'title',
+        'author',
+        'description',
+        'image',
+    ];
+
 }
