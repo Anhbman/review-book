@@ -12,4 +12,19 @@ class Comment extends Model
     protected $table = 'comments';
 
     public $timestamps = true;
+
+    protected $fillable = [
+        'user_id',
+        'book_id',
+        'content',
+    ];
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function book()
+    {
+        return $this->belongsTo(Book::class, 'book_id');
+    }
 }

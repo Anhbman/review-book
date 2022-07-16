@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\Point;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $books = Book::orderBy('id', 'DESC')->limit(10)->get();
+        $bookViews = Book::orderBy('view','DESC')->limit(5)->get();
+        $points = Point::orderBy('id','DESC')->limit(5)->get();
+        return view('home',compact(['books','bookViews','points']));
     }
 }
