@@ -17,6 +17,15 @@ class Book extends Model
         'author',
         'description',
         'image',
+        'view'
     ];
+
+    public function points() {
+        return $this->hasMany(Point::class, 'book_id');
+    }
+
+    public function comments() {
+        return $this->hasMany(Comment::class, 'book_id');
+    }
 
 }
