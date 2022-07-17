@@ -6,12 +6,16 @@
                 <div class="card">
                     <nav aria-label="breadcrumb" class="mx-3 mt-3">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
                             <li class="breadcrumb-item active" aria-current="page">book-review</li>
                         </ol>
                     </nav>
                     <div class="card-header fw-bold fs-5">
                         {{ $book->title }}
+                    </div>
+
+                    <div class="card-header fw-bold fs-5">
+                        Tác giả : {{ $book->author }}
                     </div>
 
                     <div class="card-body">
@@ -37,9 +41,13 @@
             </div>
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Chấm điểm bài đánh giá sách</div>
+                    <div class="card-header">Điểm bài đánh giá sách</div>
                     <div class="card-body">
+                        <div class="fw-bold mb-3">
+                            {{ $pointAvg == 0 ? 'chưa có điểm đánh giá trung bình' : $pointAvg }}
+                        </div>
                         <div>
+                            @if(Auth::user())
                             <form class="row g-3" action="{{ route('point') }}" method="post">
                                 @csrf
                                 <div class="col-auto">
@@ -51,6 +59,7 @@
                                     <button type="submit" class="btn btn-primary mb-3">gửi</button>
                                 </div>
                             </form>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -69,6 +78,7 @@
                                 {{ $comment->content }}
                             </div>
                         @endforeach
+                        @if(Auth::user())
                             <div>
                                 <form class="row g-3" action="{{ route('comment') }}" method="post">
                                     @csrf
@@ -82,6 +92,7 @@
                                     </div>
                                 </form>
                             </div>
+                        @endif
                     </div>
                 </div>
             </div>

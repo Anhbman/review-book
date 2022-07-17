@@ -36,6 +36,13 @@
             <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
+                    <li class="nav-item mx-3">
+                        <form autocomplete="off" id="keywords" class="d-flex" action="{{route('search')}}" method="GET">
+                            @csrf
+                            <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Tìm kiếm ....." aria-label="Tìm kiếm">
+                            <button class="btn btn-sm btn-outline-success my-2 my-sm-0" style="width: 50%" type="submit">Tìm kiếm</button>
+                        </form>
+                    </li>
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
