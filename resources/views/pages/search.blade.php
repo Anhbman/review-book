@@ -10,7 +10,7 @@
                             <li class="breadcrumb-item active" aria-current="page">tìm kiếm</li>
                         </ol>
                     </nav>
-                    <div class="card-header">Sách review</div>
+                    <div class="card-header" style="background: #e89126;color: white">Sách review</div>
 
                     <div class="card-body">
                         @if(count($books) == 0)

@@ -10,11 +10,11 @@
                             <li class="breadcrumb-item active" aria-current="page">book-review</li>
                         </ol>
                     </nav>
-                    <div class="card-header fw-bold fs-5">
+                    <div class="card-header fw-bold fs-5" style="background: #e89126;color: white">
                         {{ $book->title }}
                     </div>
 
-                    <div class="card-header fw-bold fs-5">
+                    <div class="card-header fw-bold fs-5" style="background: #e89126;color: white">
                         Tác giả : {{ $book->author }}
                     </div>
 
@@ -41,7 +41,7 @@
             </div>
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Điểm bài đánh giá sách</div>
+                    <div class="card-header" style="background: #e89126;color: white">Điểm bài đánh giá sách</div>
                     <div class="card-body">
                         <div class="fw-bold mb-3">
                             {{ $pointAvg == 0 ? 'chưa có điểm đánh giá trung bình' : $pointAvg }}
@@ -66,7 +66,7 @@
             </div>
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header" style="background: #e89126;color: white">
                         Bình luận
                     </div>
                     <div class="card-body">

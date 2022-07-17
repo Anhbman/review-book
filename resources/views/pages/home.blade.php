@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Sách review</div>
+                    <div class="card-header" style="background: #e89126;color: white">Sách review</div>
 
                     <div class="card-body">
                         @foreach($books as $book)
@@ -29,7 +29,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header">Sách review có lượt xem nhiều</div>
+                    <div class="card-header" style="background: #e89126;color: white">Sách review có lượt xem nhiều</div>
 
                     <div class="card-body">
                         <table class="table">
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="card mt-2">
-                    <div class="card-header">Sách review điểm người dùng mới đánh giá</div>
+                    <div class="card-header" style="background: #e89126;color: white">Sách review điểm người dùng mới đánh giá</div>
 
                     <div class="card-body">
                         <table class="table">
