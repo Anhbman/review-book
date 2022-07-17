@@ -22,6 +22,7 @@ Route::get('/', [\App\Http\Controllers\page\HomeController::class,'index']);
 Route::get('/book-review/{id}', [\App\Http\Controllers\page\HomeController::class,'viewBook'])->name('bookReview');
 Route::post('/book-review', [\App\Http\Controllers\page\HomeController::class,'comment'])->name('comment');
 Route::post('/book-review-point', [\App\Http\Controllers\page\HomeController::class,'point'])->name('point');
+Route::get('/search', [\App\Http\Controllers\page\HomeController::class,'search'])->name('search');
 Auth::routes();
 Route::group(['middleware' => ['admin']], function () {
     Route::resource('/comment',CommentController::class);

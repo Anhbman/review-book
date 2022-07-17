@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="card mt-2">
-                <div class="card-header">Sách review có điểm trung bình cao nhất</div>
+                <div class="card-header">Sách review điểm mới nhất</div>
 
                 <div class="card-body">
                     <table class="table">

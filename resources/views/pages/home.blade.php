@@ -14,6 +14,7 @@
                                 </div>
                                 <div class="col-10">
                                     <div class="fw-bold fs-7">{{ $book->title }}</div>
+                                    <div class="fw-bold fs-7">Tác giả: {{ $book->author }}</div>
                                     <div class="p-1">Ngày đăng:{{$book->created_at}} - lượt xem: {{$book->view}}</div>
                                     <div>
                                         <p style="overflow: hidden;white-space: nowrap; text-overflow: ellipsis;">
@@ -44,7 +45,7 @@
                     </div>
                 </div>
                 <div class="card mt-2">
-                    <div class="card-header">Sách review có điểm trung bình cao nhất</div>
+                    <div class="card-header">Sách review điểm người dùng mới đánh giá</div>
 
                     <div class="card-body">
                         <table class="table">

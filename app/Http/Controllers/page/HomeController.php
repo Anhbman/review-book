@@ -19,13 +19,29 @@ class HomeController extends Controller
         return view('pages.home',compact(['books','bookViews','points']));
     }
 
+    public function search(Request $request) {
+        $keyword = $request->keyword;
+        $books = Book::where('title','LIKE','%'.$keyword.'%')->orWhere('author','LIKE','%'.$keyword.'%')->get();
+        return view('pages.search',compact(['books']));
+    }
+
     public function viewBook($id) {
         $book = Book::where('id',$id)->first();
         $comments = Comment::where('book_id',$id)->get();
         $book->view = $book->view + 1;
+        $points = Point::where('book_id',$id)->get();
+        $sum = 0;
+        foreach ($points as $point) {
+            $sum += $point->point;
+        }
         $book->save();
+        if (count($points) != 0) {
+            $pointAvg = round($sum/count($points),1);
+        } else {
+            $pointAvg = 0;
+        }
 
-        return view('pages.book',compact(['book','comments']));
+        return view('pages.book',compact(['book','comments','pointAvg']));
     }
 
     public function comment(Request $request) {
