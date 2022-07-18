@@ -51,9 +51,11 @@
                         <div class="fw-bold mb-3">
                            điểm trung bình : {{ $pointAvg == 0 ? 'chưa có điểm đánh giá trung bình' : $pointAvg }} điểm
                         </div>
+                        @if($checkpoint)
                         <div class="fw-bold mb-3">
                             số điểm bạn đã chấm : {{ $checkpoint->point }} điểm
                         </div>
+                        @endif
                         <div>
                             @if(Auth::user() && !$checkpoint)
                                 <form class="row g-3" action="{{ route('point') }}" method="post">
