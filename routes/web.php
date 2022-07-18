@@ -4,9 +4,12 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PointController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+if (App::environment('production')) {
+    \Illuminate\Support\Facades\URL::forceScheme('https');
+}
 /*
 |--------------------------------------------------------------------------
 | Web Routes
