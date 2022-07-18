@@ -3,6 +3,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <div class="card">
                     <nav aria-label="breadcrumb" class="mx-3 mt-3">
                         <ol class="breadcrumb">
@@ -44,21 +49,24 @@
                     <div class="card-header" style="background: #e89126;color: white">Điểm bài đánh giá sách</div>
                     <div class="card-body">
                         <div class="fw-bold mb-3">
-                            {{ $pointAvg == 0 ? 'chưa có điểm đánh giá trung bình' : $pointAvg }}
+                           điểm trung bình : {{ $pointAvg == 0 ? 'chưa có điểm đánh giá trung bình' : $pointAvg }} điểm
+                        </div>
+                        <div class="fw-bold mb-3">
+                            số điểm bạn đã chấm : {{ $checkpoint->point }} điểm
                         </div>
                         <div>
-                            @if(Auth::user())
-                            <form class="row g-3" action="{{ route('point') }}" method="post">
-                                @csrf
-                                <div class="col-auto">
-                                    <label for="inputPassword2" class="visually-hidden">bình luận</label>
-                                    <input type="number" name="point" class="form-control" id="inputPassword2" placeholder="chấm điểm">
-                                </div>
-                                <input type="hidden" name="book_id" value="{{$book->id}}" class="form-control" id="inputPassword2" placeholder="bình luận">
-                                <div class="col-auto">
-                                    <button type="submit" class="btn btn-primary mb-3">gửi</button>
-                                </div>
-                            </form>
+                            @if(Auth::user() && !$checkpoint)
+                                <form class="row g-3" action="{{ route('point') }}" method="post">
+                                    @csrf
+                                    <div class="col-auto">
+                                        <label for="inputPassword2" class="visually-hidden">bình luận</label>
+                                        <input type="number" name="point" class="form-control" id="inputPassword2" placeholder="chấm điểm">
+                                    </div>
+                                    <input type="hidden" name="book_id" value="{{$book->id}}" class="form-control" id="inputPassword2" placeholder="bình luận">
+                                    <div class="col-auto">
+                                        <button type="submit" class="btn btn-primary mb-3">gửi</button>
+                                    </div>
+                                </form>
                             @endif
                         </div>
                     </div>

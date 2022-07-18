@@ -30,6 +30,7 @@ class HomeController extends Controller
         $comments = Comment::where('book_id',$id)->get();
         $book->view = $book->view + 1;
         $points = Point::where('book_id',$id)->get();
+        $checkpoint = Point::where('book_id',$id)->where('user_id',Auth::user()->id)->first();
         $sum = 0;
         foreach ($points as $point) {
             $sum += $point->point;
@@ -41,7 +42,7 @@ class HomeController extends Controller
             $pointAvg = 0;
         }
 
-        return view('pages.book',compact(['book','comments','pointAvg']));
+        return view('pages.book',compact(['book','comments','pointAvg','checkpoint']));
     }
 
     public function comment(Request $request) {
@@ -58,11 +59,21 @@ class HomeController extends Controller
     }
 
     public function point(Request $request) {
+        $data = $request->validate(
+            [
+            'point' => 'required|integer|between:1,10',
+            ],
+            [
+                'point.required' => 'bạn chưa chấm điểm',
+                'point.integer' => 'nhập số',
+                'point.between' => 'điểm chấm là phải từ 1 đến 10'
+            ]
+        );
         $point = new Point();
         $point->user_id = Auth::user()->id;
         $point->book_id = $request->book_id;
-        $point->point = $request->point;
+        $point->point = $data['point'];
         $point->save();
-        return redirect()->back();
+        return redirect()->back()->with('status','cho điểm thành công!');;
     }
 }
