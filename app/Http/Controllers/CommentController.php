@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     public function index() {
-        $comments = Comment::paginate(8);;
+        $comments = Comment::orderBy('id', 'DESC')->paginate(8);;
         return view('comments.index',compact('comments'));
     }
 
