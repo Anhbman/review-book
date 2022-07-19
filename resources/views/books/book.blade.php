@@ -60,6 +60,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                            {{$books->links("pagination::bootstrap-4")}}
                     </div>
                 </div>
             </div>

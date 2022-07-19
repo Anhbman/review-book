@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class PointController extends Controller
 {
     public function index() {
-        $points = Point::all();
+        $points = Point::paginate(8);
 
         return view('points.index',compact('points'));
     }

@@ -28,6 +28,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                        {{$points->links("pagination::bootstrap-4")}}
                     </div>
                 </div>
             </div>

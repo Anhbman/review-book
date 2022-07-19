@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $books = Book::orderBy('id', 'DESC')->limit(10)->get();
+        $books = Book::orderBy('id', 'DESC')->paginate(8);
         $bookViews = Book::orderBy('view','DESC')->limit(5)->get();
         $points = Point::orderBy('id','DESC')->limit(5)->get();
         return view('home',compact(['books','bookViews','points']));

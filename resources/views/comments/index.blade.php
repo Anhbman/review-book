@@ -38,6 +38,8 @@
                             @endforeach
                             </tbody>
                         </table>
+                        {{$comments->links("pagination::bootstrap-4")}}
+
                     </div>
                 </div>
             </div>
