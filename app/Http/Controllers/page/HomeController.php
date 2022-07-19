@@ -30,7 +30,10 @@ class HomeController extends Controller
         $comments = Comment::where('book_id',$id)->get();
         $book->view = $book->view + 1;
         $points = Point::where('book_id',$id)->get();
-        $checkpoint = Point::where('book_id',$id)->where('user_id',Auth::user()->id)->first();
+        $checkpoint = null;
+        if(Auth::user()) {
+            $checkpoint = Point::where('book_id',$id)->where('user_id',Auth::user()->id)->first();
+        }
         $sum = 0;
         foreach ($points as $point) {
             $sum += $point->point;
