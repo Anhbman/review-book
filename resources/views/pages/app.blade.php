@@ -43,6 +43,11 @@
                             <button class="btn btn-sm btn-outline-success my-2 my-sm-0" style="width: 50%" type="submit">Tìm kiếm</button>
                         </form>
                     </li>
+                    @if(Auth::user() && Auth::user()->role == 1)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home') }}">Trang Admin</a>
+                        </li>
+                    @endif
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
