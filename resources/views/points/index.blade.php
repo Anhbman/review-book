@@ -10,25 +10,27 @@
                     </div>
 
                     <div class="card-body">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>Tên người dùng</th>
-                                <th>Tên Sách</th>
-                                <th>Điểm</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($points as $point)
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
                                 <tr>
-                                    <td>{{$point->user->name}}</td>
-                                    <td>{{$point->book->title}}</td>
-                                    <td>{{$point->point}}</td>
+                                    <th>Tên người dùng</th>
+                                    <th>Tên Sách</th>
+                                    <th>Điểm</th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                        {{$points->links("pagination::bootstrap-4")}}
+                                </thead>
+                                <tbody>
+                                @foreach($points as $point)
+                                    <tr>
+                                        <td>{{$point->user->name}}</td>
+                                        <td>{{$point->book->title}}</td>
+                                        <td>{{$point->point}}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                            {{$points->links("pagination::bootstrap-4")}}
+                        </div>
                     </div>
                 </div>
             </div>

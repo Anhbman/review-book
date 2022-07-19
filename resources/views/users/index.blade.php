@@ -15,41 +15,43 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>Tên</th>
-                                <th>Email</th>
-                                <th>Quyền</th>
-                                <th scope="col"></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($users as $user)
+                            <div class="table-responsive">
+                                <table class="table">
+                                <thead>
                                 <tr>
-                                    <td>{{$user->name}}</td>
-                                    <td>{{$user->email}}</td>
-                                    <td>
-                                        @if($user->role == 0)
-                                            <span class="text text-success">Người dùng</span>
-                                        @else
-                                            <span class="text text-danger">Admin</span>
-                                        @endif
-                                    </td>
-                                    <td class="d-flex flex-row p-1">
-                                        <div class="p-1">
-                                            <form method="post" action="{{route('user.destroy',$user->id)}}">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button onclick="return confirm('bạn muốn xóa user này?');" class="btn btn-danger">xóa</button>
-                                            </form>
-                                        </div>
-                                    </td>
+                                    <th>Tên</th>
+                                    <th>Email</th>
+                                    <th>Quyền</th>
+                                    <th scope="col"></th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                            {{$users->links("pagination::bootstrap-4")}}
+                                </thead>
+                                <tbody>
+                                @foreach($users as $user)
+                                    <tr>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->email}}</td>
+                                        <td>
+                                            @if($user->role == 0)
+                                                <span class="text text-success">Người dùng</span>
+                                            @else
+                                                <span class="text text-danger">Admin</span>
+                                            @endif
+                                        </td>
+                                        <td class="d-flex flex-row p-1">
+                                            <div class="p-1">
+                                                <form method="post" action="{{route('user.destroy',$user->id)}}">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button onclick="return confirm('bạn muốn xóa user này?');" class="btn btn-danger">xóa</button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                                {{$users->links("pagination::bootstrap-4")}}
+                            </div>
                     </div>
                 </div>
             </div>
